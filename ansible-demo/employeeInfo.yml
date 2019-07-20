@@ -1,0 +1,28 @@
+
+
+-  name: Print the employee information
+   hosts: localhost
+
+   vars: 
+     -  
+       employee:
+          Name: Jacob
+          Sex: Male
+          Age: 30
+          Title: Systems Engineer
+          Projects: 
+                -  Automation
+                -  Support
+          Payslips:
+                - Month: June
+                  Wage: 4000
+                - Month: July
+                  Wage: 4500
+                - Month: August
+                  Wage: 4000
+
+   tasks: 
+   
+     - 
+       debug: msg="{{ item }}"
+       with_items: '{{ employee }}'  

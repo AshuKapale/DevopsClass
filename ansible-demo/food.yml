@@ -1,0 +1,81 @@
+# Update the food.yml file to add a Vegetable - Carrot
+
+- name: Print List of fruits
+  hosts: localhost
+
+  vars:
+    fruit: Apple
+    Drink: Water
+    Dessert: Cake
+    Vegetable: Carrot
+    
+  tasks:
+    -
+      debug: msg="{{ item }}"
+      with_items: '{{ vars }}'
+
+
+# Update the food.yml file to add a list of Vegetables - Carrot, Tomato, Cucumber
+
+
+- name: Print List of Vegetables
+  hosts: localhost
+
+  vars:
+    Fruits:
+      - Apple
+      - Banana
+      - Orange
+    Vegetables:
+      - Carrot
+      - Tomato
+      - Cucumber
+
+    
+  tasks:
+    -
+      debug: msg="{{ item }}"
+      with_items: '{{ Vegetables }}'
+
+
+#update the nutrition information for Vegetables.
+
+- name: Print nutrition information for Vegetables
+  hosts: localhost
+
+  vars:
+    Fruits:
+      - Apple:
+            Calories: 95
+            Fat: 0.3 g
+            Carbs: 25 g
+      - Banana:
+            Calories: 105
+            Fat: 0.4 g
+            Carbs: 27 g
+      - Orange:
+            Calories: 45
+            Fat: 0.1 g
+            Carbs: 11 g
+
+    Vegetables:
+       - Carrot:
+            Calories: 25
+            Fat: 0.1 g
+            Carbs: 6 g
+       - Tomato:
+            Calories: 22
+            Fat: 0.2 g
+            Carbs: 4.8 g
+       - Cucumber:
+           Calories: 8
+           Fat: 0.1 g
+           Carbs: 1.9 g
+
+
+  tasks:
+    -  
+      debug: msg="{{ item }}"
+      with_items: '{{ Vegetables }}'
+    
+
